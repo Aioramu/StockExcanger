@@ -7,7 +7,7 @@ class StockSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class FinancialSerializer(serializers.ModelSerializer):
-    stock=StockSerializer()
+    stock=StockSerializer(read_only=True)
     class Meta:
         model = Financial
         fields = '__all__'
