@@ -2,6 +2,28 @@ from selenium import webdriver
 from pyvirtualdisplay import Display
 
 
+shares = []
+driver = webdriver.Firefox(executable_path = './geckodriver')
+#display = Display(visible=0, size=(800, 600))#
+#display.start()#
+#driver = webdriver.Firefox()#
+url = "https://smart-lab.ru/q/shares_fundamental/"
+driver.get(url)
+gas = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[2]/td[11]").text
+#"I am the godness of recursion. On the river this sheep code one row above to the saint"
+i=1
+
+def from_shares(tdnum):
+    """Take some text from shares fundamental"""
+    l=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td["+str(tdnum)+"]").text
+    return(l)
+
+def remove_trash(string):
+    """Remove % ₽ млрд spases and replace , to ."""
+    string=str(string)
+    string=string.replace(",", ".").replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "")
+    return string
+
 class Share(object):
 
     def __init__(self, url):
@@ -9,7 +31,7 @@ class Share(object):
     """Take some Share's stats"""
 
     def share_body(self):
-        report = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[19]").text
+        report = from_shares(19)
         if int(report[:report.rfind('-')]) <= 2019:
             print("Too old")
             return None
@@ -23,13 +45,13 @@ class Share(object):
                 share_stats = {}
                 share_stats["name"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").text
                 share_stats["ticket"]=ticket
-                share_stats["pe"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[13]").text
-                share_stats["ps"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[14]").text
-                share_stats["pb"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[15]").text
-                share_stats["env"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[16]").text
-                share_stats["net_worth"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[6]").text.replace(" ", "")
-                share_stats["roe"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[17]").text.replace("%", "")
-                share_stats["debt_eq"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[18]").text
+                share_stats["pe"]=from_shares(13)
+                share_stats["ps"]=from_shares(14)
+                share_stats["pb"]=from_shares(15)
+                share_stats["env"]=from_shares(16)
+                share_stats["net_worth"]=remove_trash(from_shares(6))
+                share_stats["roe"]=remove_trash(from_shares(17))
+                share_stats["debt_eq"]=from_shares(18)
                 share_stats=self.ao(ticket, share_stats)
                 return share_stats
 
@@ -72,21 +94,7 @@ class Share(object):
         driver.switch_to.window(driver.window_handles[0])
         return share_stats
 
-def remove_trash(string):
-    """Remove % ₽ млрд spases and replace , to ."""
-    string=str(string)
-    string=string.replace(",", ".").replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "")
-    return string
 
-shares = []
-driver = webdriver.Firefox(executable_path = './geckodriver')
-#display = Display(visible=0, size=(800, 600))#
-#display.start()#
-#driver = webdriver.Firefox()#
-url = "https://smart-lab.ru/q/shares_fundamental/"
-driver.get(url)
-gas = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[2]/td[10]").text
-i=1
 
 while(True):
     try:
