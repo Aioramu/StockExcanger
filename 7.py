@@ -1,9 +1,11 @@
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
 from pyvirtualdisplay import Display
-
+from time import sleep
 
 shares = []
-driver = webdriver.Firefox(executable_path = './geckodriver')
+driver = webdriver.Remote('http://selenium:4444/wd/hub',
+                          desired_capabilities=DesiredCapabilities.FIREFOX)
 #display = Display(visible=0, size=(800, 600))#
 #display.start()#
 #driver = webdriver.Firefox()#
@@ -36,14 +38,16 @@ class Share(object):
             print("Too old")
             return None
         else:
-            ticket_href = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").get_attribute("href")
+            ticket_href = driver.find_element_by_xpath(
+                        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").get_attribute("href")
             ticket = ticket_href[ticket_href.rfind('/')+1:]
             if len(ticket) > 10:
                 print("Too scam")
                 return None
             else:
                 share_stats = {}
-                share_stats["name"]=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").text
+                share_stats["name"]=driver.find_element_by_xpath(
+                                   "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").text
                 share_stats["ticket"]=ticket
                 share_stats["pe"]=from_shares(13)
                 share_stats["ps"]=from_shares(14)
@@ -61,13 +65,15 @@ class Share(object):
         driver.get("https://smart-lab.ru/forum/"+ticket)
         driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]").click()
         try:
-            share_stats["price"]=driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[3]/div[2]/span/i").text.replace("₽", "")
+            share_stats["price"]=driver.find_element_by_xpath(
+                                "/html/body/div[2]/div[2]/div[3]/div[2]/span/i").text.replace("₽", "")
         except Exception as e:
             print(e)
             print("Missing ao price")
             #return None
         try:
-            share_stats["ebitda"]=driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
+            share_stats["ebitda"]=driver.find_element_by_xpath(
+                                 "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
             share_stats["ebitda"]=remove_trash(share_stats["ebitda"])
         except Exception as e:
             print(e)
@@ -81,12 +87,14 @@ class Share(object):
         driver.get("https://smart-lab.ru/forum/"+ticket_for_url)
         driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]").click()
         try:
-            share_stats["ticket"]=driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
+            share_stats["ticket"]=driver.find_element_by_xpath(
+                                 "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
         except Exception as e:
             print(e)
             share_stats["ticket"]=share_stats["ticket"]
         try:
-            share_stats["price"]=driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[3]/div[2]/span[2]/i").text.replace("₽", "")
+            share_stats["price"]=driver.find_element_by_xpath(
+                                 "/html/body/div[2]/div[2]/div[3]/div[2]/span[2]/i").text.replace("₽", "")
         except Exception as e:
             print(e)
 
@@ -94,7 +102,7 @@ class Share(object):
         driver.switch_to.window(driver.window_handles[0])
         return share_stats
 
-
+sleep(5) ##delay to start docker
 
 while(True):
     try:

@@ -1,21 +1,17 @@
-version: "3.9"
+version: '3'
 
 services:
-  db:
-    image: postgres:13
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+  selenium:
+    image: selenium/standalone-firefox
     ports:
-      - "5432"
-    container_name: stock-db
-  web:
+    - 4444:4444
     restart: always
-    build: .
-    command: bash -c "python manage.py makemigrations &&python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  app:
+    build:
+      context: .
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-    container_name: stock
+    - ./StockExcanger:/StockExcanger
+    command: sh -c "python3 7.py"
+    depends_on:
+    - selenium
