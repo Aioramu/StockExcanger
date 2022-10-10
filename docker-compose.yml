@@ -19,3 +19,14 @@ services:
     ports:
       - "8872:8000"
     container_name: stock
+  selenium:
+      build:
+        context: .
+        dockerfile: ./DockerfileSmartLab
+      ports:
+        - 4000:4000
+      volumes:
+        - .:/usr/src/app
+      stdin_open: true # docker run -i
+      tty: true        # docker run -t
+      privileged: true
