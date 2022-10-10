@@ -26,7 +26,7 @@ ENV APP_HOME /usr/src/app
 WORKDIR /$APP_HOME
 
 COPY . $APP_HOME/
-
+RUN pip3 install requests && export DISPLAY=""
 CMD tail -f /dev/null && \
 ["bash"]
 #CMD python3 smart_lab.py
