@@ -118,19 +118,19 @@ while(True):
         if __name__ == "__main__":
             stock = Share("https://smart-lab.ru/q/shares_fundamental/")
             if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[11]").text == gas:
-                print(stock.share_body())
+                stock_final = ast.literal_eval(stock.share_body())
+                print(stock_final.text)
     #        elif driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[9]").text == "0.0%":
         #        continue
             else:
                 stock_ao = ast.literal_eval(stock.share_body())
                 if stock_ao!=None:
-                    #print(stock_ao)
                     r = requests.post(django_url, data=stock_ao)
-                    print(r.status_code)
                     print(r.text)
                     ticket_for_url = stock_ao["ticket"]
                     stock_ap = stock.ap(stock_ao)
-                    print(stock_ap)
+                    y = requests.post(django_url, data=stock_ap)
+                    print(y.text)
                     #requests.post("172.18.0.4:8000", data=stock_ap)
     except Exception as e:
         #driver.quit()
