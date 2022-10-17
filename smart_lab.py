@@ -9,13 +9,15 @@ import ast
 import json
 
 
+django_url = "http://172.21.0.1:8000"
+shares = []
+
 display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
 options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service)
 
-django_url = "http://172.21.0.1:8000"
 display.start()
 url = "https://smart-lab.ru/q/shares_fundamental/"
 driver.get(url)
@@ -65,6 +67,7 @@ class Share(object):
                 share_stats["roe"]=remove_trash(from_shares(17))
                 share_stats["debt_eq"]=from_shares(18)
                 share_stats=self.ao(ticket, share_stats)
+                #shares.append(share_stats)
                 return share_stats
 
     def ao(self, ticket, share_stats):
@@ -117,12 +120,18 @@ while(True):
         i+=1
         if __name__ == "__main__":
             stock = Share("https://smart-lab.ru/q/shares_fundamental/")
-            shares = []
-            d = shares.append(stock.share_body())
+            t = stock.share_body()
+            shares.clear()
+            shares.append(t)
+            print(shares)
             if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[11]").text == gas:
-                r = requests.post(django_url, data=d)
+                r = requests.post(django_url, data=shares)
                 print(r.status_code)
                 print(r.text)
+
+                #g = requests.post(django_url)
+                #print(g.status_code)
+                #print(g.text)
                 #print(stock.share_body())
     #        elif driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[9]").text == "0.0%":
         #        continue
