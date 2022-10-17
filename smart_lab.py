@@ -6,6 +6,7 @@ from selenium.webdriver.firefox.service import Service
 from time import sleep
 import requests
 import ast
+import json
 
 
 display = Display(visible=0, size=(800, 600))
@@ -15,7 +16,6 @@ options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service)
 
 django_url = "http://172.21.0.1:8000"
-shares = []
 display.start()
 url = "https://smart-lab.ru/q/shares_fundamental/"
 driver.get(url)
@@ -117,20 +117,25 @@ while(True):
         i+=1
         if __name__ == "__main__":
             stock = Share("https://smart-lab.ru/q/shares_fundamental/")
+            shares = []
+            d = shares.append(stock.share_body())
             if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[11]").text == gas:
-                stock_final = ast.literal_eval(stock.share_body())
-                print(stock_final.text)
+                r = requests.post(django_url, data=d)
+                print(r.status_code)
+                print(r.text)
+                #print(stock.share_body())
     #        elif driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[9]").text == "0.0%":
         #        continue
             else:
-                stock_ao = ast.literal_eval(stock.share_body())
+                stock_ao = d
                 if stock_ao!=None:
+                    #print(stock_ao)
                     r = requests.post(django_url, data=stock_ao)
+                    print(r.status_code)
                     print(r.text)
                     ticket_for_url = stock_ao["ticket"]
                     stock_ap = stock.ap(stock_ao)
-                    y = requests.post(django_url, data=stock_ap)
-                    print(y.text)
+                    print(stock_ap)
                     #requests.post("172.18.0.4:8000", data=stock_ap)
     except Exception as e:
         #driver.quit()
