@@ -17,5 +17,5 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8872:8000"
     container_name: stock

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'stockex.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
+default_auto_field = 'django.db.models.BigAutoField'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.postgresql_psycopg2',
