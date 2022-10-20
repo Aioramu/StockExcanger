@@ -9,7 +9,7 @@ import ast
 import json
 
 
-django_url = "http://172.21.0.1:8000"
+django_url = "http://web:8000"
 shares = []
 
 display = Display(visible=0, size=(800, 600))
@@ -125,7 +125,7 @@ while(True):
             shares.append(t)
             print(shares)
             if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[11]").text == gas:
-                r = requests.post(django_url, data=shares)
+                r = requests.post(django_url, json=shares)
                 print(r.status_code)
                 print(r.text)
 
