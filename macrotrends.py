@@ -9,7 +9,7 @@ import ast
 
 
 #global variables
-django_url = "http://172.21.0.1:8000"
+django_url = "http://web:8000"
 url = "https://www.macrotrends.net/stocks/stock-screener"
 stock_count=1 #on curr page, takes 1-20 values
 
@@ -17,7 +17,7 @@ stock_count=1 #on curr page, takes 1-20 values
 display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
-#options.add_argument('--headless') #turn off display for docker
+options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service)
 
 
@@ -46,8 +46,8 @@ def share(stock_count):
     share_stats["debt_eq"]
 """
 def post_to_django(data, django_url):
-    stock_dict = ast.literal_eval(data)
-    stock_post = requests.post(django_url, stock_dict)
+    #stock_dict = ast.literal_eval(data)
+    stock_post = requests.post(django_url, json=data)
     print(stock_post.status_code)
     print(stock_post.text)
 

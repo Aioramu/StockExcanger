@@ -25,6 +25,8 @@ gas = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1
 #"I am the godness of recursion. On the river this sheep code one row above to the saint"
 i=1
 
+
+
 def from_shares(tdnum):
     """Take some text from shares fundamental"""
     l=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td["+str(tdnum)+"]").text
@@ -41,6 +43,8 @@ class Share(object):
     def __init__(self, url):
         self.url = url
     """Take some Share's stats"""
+
+
 
     def share_body(self):
         report = from_shares(19)
@@ -66,6 +70,7 @@ class Share(object):
                 share_stats["net_worth"]=remove_trash(from_shares(6))
                 share_stats["roe"]=remove_trash(from_shares(17))
                 share_stats["debt_eq"]=from_shares(18)
+                share_stats["country"]="ru"
                 share_stats=self.ao(ticket, share_stats)
                 #shares.append(share_stats)
                 return share_stats
@@ -113,40 +118,42 @@ class Share(object):
         driver.switch_to.window(driver.window_handles[0])
         return share_stats
 
+def post_to_django(shares, django_url):
+    #stock_dict = ast.literal_eval(data)
+    print(shares)
+    #stock_post = requests.post(django_url, json=shares)
+    #print(stock_post.status_code)
+    #print(stock_post.text)
 
-
-while(True):
-    try:
-        i+=1
-        if __name__ == "__main__":
+if __name__ == "__main__":
+    while(True):
+        try:
+            i+=1
+            tr = str(i+1)
             stock = Share("https://smart-lab.ru/q/shares_fundamental/")
             t = stock.share_body()
             shares.clear()
             shares.append(t)
-            print(shares)
-            if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[11]").text == gas:
-                r = requests.post(django_url, json=shares)
-                print(r.status_code)
-                print(r.text)
-
-                #g = requests.post(django_url)
+            #print(shares)
+            if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(tr)+"]/td[11]").text == gas:
+                post_to_django(shares, django_url)
+                    #g = requests.post(django_url)
                 #print(g.status_code)
                 #print(g.text)
                 #print(stock.share_body())
     #        elif driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[9]").text == "0.0%":
         #        continue
             else:
-                stock_ao = d
+                stock_ao = stock.share_body()
                 if stock_ao!=None:
                     #print(stock_ao)
-                    r = requests.post(django_url, data=stock_ao)
-                    print(r.status_code)
-                    print(r.text)
+                    post_to_django(stock_ao, django_url)
                     ticket_for_url = stock_ao["ticket"]
                     stock_ap = stock.ap(stock_ao)
-                    print(stock_ap)
+                    post_to_django(stock_ap, django_url)
                     #requests.post("172.18.0.4:8000", data=stock_ap)
-    except Exception as e:
-        #driver.quit()
-        #display.stop()
-        print(e)
+        except Exception as e:
+            #driver.quit()
+            #display.stop()
+            print(e)
+            break
