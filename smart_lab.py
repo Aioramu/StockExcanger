@@ -9,34 +9,18 @@ import ast
 import json
 
 
+url = "https://smart-lab.ru/q/shares_fundamental/"
 django_url = "http://web:8000"
 shares = []
+i=1
 
+#selenium and display settings
 display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
 options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service)
 
-display.start()
-url = "https://smart-lab.ru/q/shares_fundamental/"
-driver.get(url)
-gas = driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[2]/td[11]").text
-#"I am the godness of recursion. On the river this sheep code one row above to the saint"
-i=1
-
-
-
-def from_shares(tdnum):
-    """Take some text from shares fundamental"""
-    l=driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td["+str(tdnum)+"]").text
-    return(l)
-
-def remove_trash(string):
-    """Remove % ₽ млрд spases and replace , to ."""
-    string=str(string)
-    string=string.replace(",", ".").replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "")
-    return string
 
 class Share(object):
 
@@ -44,10 +28,20 @@ class Share(object):
         self.url = url
     """Take some Share's stats"""
 
+    def from_shares(self, tdnum):
+        """Take some text from shares fundamental"""
+        l=driver.find_element_by_xpath(
+         "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td["+str(tdnum)+"]").text
+        return(l)
 
+    def remove_trash(string):
+        """Remove % ₽ млрд spases and replace , to ."""
+        string=str(string)
+        string=string.replace(",", ".").replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "")
+        return string
 
     def share_body(self):
-        report = from_shares(19)
+        report = self.from_shares(19)
         if int(report[:report.rfind('-')]) <= 2019:
             print("Too old")
             return None
@@ -63,13 +57,15 @@ class Share(object):
                 share_stats["name"]=driver.find_element_by_xpath(
                                    "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").text
                 share_stats["ticket"]=ticket
-                share_stats["pe"]=from_shares(13)
-                share_stats["ps"]=from_shares(14)
-                share_stats["pb"]=from_shares(15)
-                share_stats["env"]=from_shares(16)
-                share_stats["net_worth"]=remove_trash(from_shares(6))
-                share_stats["roe"]=remove_trash(from_shares(17))
-                share_stats["debt_eq"]=from_shares(18)
+                share_stats["pe"]=self.from_shares(13)
+                share_stats["ps"]=self.from_shares(14)
+                share_stats["pb"]=self.from_shares(15)
+                share_stats["env"]=self.from_shares(16)
+                share_stats["net_worth"]=self.from_shares(6)
+                share_stats["net_worth"]=share_stats["net_worth"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
+                share_stats["roe"]=self.from_shares(17)
+                share_stats["roe"]=share_stats["roe"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
+                share_stats["debt_eq"]=self.from_shares(18)
                 share_stats["country"]="ru"
                 share_stats=self.ao(ticket, share_stats)
                 #shares.append(share_stats)
@@ -90,7 +86,7 @@ class Share(object):
         try:
             share_stats["ebitda"]=driver.find_element_by_xpath(
                                  "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
-            share_stats["ebitda"]=remove_trash(share_stats["ebitda"])
+            share_stats["ebitda"]=share_stats["ebitda"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
         except Exception as e:
             print(e)
         driver.close()
@@ -104,10 +100,11 @@ class Share(object):
         driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]").click()
         try:
             share_stats["ticket"]=driver.find_element_by_xpath(
-                                 "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
+                                  "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
         except Exception as e:
             print(e)
-            share_stats["ticket"]=share_stats["ticket"]
+            share_stats["ticket"]=share_stats["ticket"
+                                  ].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
         try:
             share_stats["price"]=driver.find_element_by_xpath(
                                  "/html/body/div[2]/div[2]/div[3]/div[2]/span[2]/i").text.replace("₽", "")
@@ -120,12 +117,15 @@ class Share(object):
 
 def post_to_django(shares, django_url):
     #stock_dict = ast.literal_eval(data)
-    print(shares)
-    #stock_post = requests.post(django_url, json=shares)
-    #print(stock_post.status_code)
-    #print(stock_post.text)
+    stock_post = requests.post(django_url, json=shares)
+    print(stock_post.status_code)
+    print(stock_post.text)
 
 if __name__ == "__main__":
+    display.start()
+    driver.get(url)
+    gas = driver.find_element_by_xpath(
+        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[2]/td[11]").text #Empty ap"
     while(True):
         try:
             i+=1
@@ -134,24 +134,16 @@ if __name__ == "__main__":
             t = stock.share_body()
             shares.clear()
             shares.append(t)
-            #print(shares)
-            if driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(tr)+"]/td[11]").text == gas:
+            if driver.find_element_by_xpath(
+                     "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(tr)+"]/td[11]").text == gas:
                 post_to_django(shares, django_url)
-                    #g = requests.post(django_url)
-                #print(g.status_code)
-                #print(g.text)
-                #print(stock.share_body())
-    #        elif driver.find_element_by_xpath("/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[9]").text == "0.0%":
-        #        continue
             else:
                 stock_ao = stock.share_body()
                 if stock_ao!=None:
-                    #print(stock_ao)
                     post_to_django(stock_ao, django_url)
                     ticket_for_url = stock_ao["ticket"]
                     stock_ap = stock.ap(stock_ao)
                     post_to_django(stock_ap, django_url)
-                    #requests.post("172.18.0.4:8000", data=stock_ap)
         except Exception as e:
             #driver.quit()
             #display.stop()
