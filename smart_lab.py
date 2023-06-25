@@ -18,8 +18,9 @@ i=1
 display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
-options.add_argument('--headless') #turn off display for docker
-driver = webdriver.Firefox(options=options, service=service)
+service_log_path = "/dev/null"
+#options.add_argument('--headless') #turn off display for docker
+driver = webdriver.Firefox(options=options, service=service, service_log_path=service_log_path)
 
 
 class Share(object):
@@ -75,17 +76,17 @@ class Share(object):
         driver.execute_script("window.open('https://smart-lab.ru/forum/GAZP', '_blank')")
         driver.switch_to.window(driver.window_handles[1])
         driver.get("https://smart-lab.ru/forum/"+ticket)
-        driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]").click() #serch grath button 
         try:
             share_stats["price"]=driver.find_element_by_xpath(
-                                "/html/body/div[2]/div[2]/div[3]/div[2]/span/i").text.replace("₽", "")
+                                "/html/body/div[2]/div[3]/div[3]/div[2]/span/i").text.replace("₽", "")
         except Exception as e:
             print(e)
             print("Missing ao price")
             #return None
         try:
             share_stats["ebitda"]=driver.find_element_by_xpath(
-                                 "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
+                                 "/html/body/div[2]/div[3]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
             share_stats["ebitda"]=share_stats["ebitda"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
         except Exception as e:
             print(e)
@@ -97,7 +98,7 @@ class Share(object):
         driver.execute_script("window.open('https://smart-lab.ru/forum/GAZP', '_blank')")
         driver.switch_to.window(driver.window_handles[1])
         driver.get("https://smart-lab.ru/forum/"+ticket_for_url)
-        driver.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]").click()
+        driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]").click()
         try:
             share_stats["ticket"]=driver.find_element_by_xpath(
                                   "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
@@ -136,14 +137,17 @@ if __name__ == "__main__":
             shares.append(t)
             if driver.find_element_by_xpath(
                      "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(tr)+"]/td[11]").text == gas:
-                post_to_django(shares, django_url)
+                #post_to_django(shares, django_url)
+                print(shares)
             else:
                 stock_ao = stock.share_body()
                 if stock_ao!=None:
-                    post_to_django(stock_ao, django_url)
+                    #ost_to_django(stock_ao, django_url)
+                    print(stock_ao)
                     ticket_for_url = stock_ao["ticket"]
                     stock_ap = stock.ap(stock_ao)
-                    post_to_django(stock_ap, django_url)
+                    #post_to_django(stock_ap, django_url)
+                    print(stock_ap)
         except Exception as e:
             #driver.quit()
             #display.stop()
