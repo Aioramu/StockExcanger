@@ -44,10 +44,9 @@ def share(stock_count):
     share_stats["ticket"]=ticket
     share_stats["pe"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[7]/div").text
     share_stats["ps"]=get_ps(ticket)
+    share_stats["pb"]=get_pb(ticket)
     return share_stats
 """
-    share_stats["ps"]
-    share_stats["pb"]
     share_stats["env"]
     share_stats["net_worth"]
     share_stats["roe"]
@@ -60,10 +59,10 @@ def post_to_django(data, django_url):
     print(stock_post.text)
 
 def get_ps(ticket):
-    ps_ratio= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+"&type=price-sales&statement=price-ratios&freq=Q"
-    ps_response = requests.get(ps_ratio)
-    ps_soup = BeautifulSoup(ps_response.text)
-    string_soup = str(ps_soup)
+    ratio= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+"&type=price-sales&statement=price-ratios&freq=Q"
+    response = requests.get(ratio)
+    soup = BeautifulSoup(response.text)
+    string_soup = str(soup)
     find_var = re.search("var chartData.*}]", string_soup)
     save_var = str(find_var[0])[::-1]
     cut_last_vals = save_var.split(':"1v')[0]
@@ -71,7 +70,17 @@ def get_ps(ticket):
     split_vals = last_vals.split(",")
     return(split_vals[1])
 
-
+def get_pb(ticket):
+    ratio= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+"&type=price-book&statement=price-ratios&freq=Q"
+    response = requests.get(ratio)
+    soup = BeautifulSoup(response.text)
+    string_soup = str(soup)
+    find_var = re.search("var chartData.*}]", string_soup)
+    save_var = str(find_var[0])[::-1]
+    cut_last_vals = save_var.split(':"1v')[0]
+    last_vals = cut_last_vals[::-1].replace('"v3":', '').replace("}]", "")
+    split_vals = last_vals.split(",")
+    return(split_vals[1])
 
 if __name__ == "__main__":
     display.start()
