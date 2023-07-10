@@ -19,7 +19,7 @@ display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
 service_log_path = "/dev/null"
-#options.add_argument('--headless') #turn off display for docker
+options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service, service_log_path=service_log_path)
 
 
