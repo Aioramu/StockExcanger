@@ -6,13 +6,16 @@ from selenium.webdriver.firefox.service import Service
 from time import sleep
 import requests
 import ast
-
+from bs4 import BeautifulSoup
+import re
+import requests
 
 #global variables
 django_url = "http://web:8000"
 url = "https://www.macrotrends.net/stocks/stock-screener" #parser's target
 stock_count=1 #on curr page, takes 1-20 values
 shares = [] # list of dictionaries that flashing on each iteration
+ticket = str
 
 #selenium and display settings
 display = Display(visible=0, size=(800, 600))
@@ -37,8 +40,10 @@ def share(stock_count):
     """take some shares from main page"""
     share_stats = {}
     share_stats["name"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[1]/div/div/a").text
-    share_stats["ticket"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[2]/div").text
+    ticket = driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[2]/div").text
+    share_stats["ticket"]=ticket
     share_stats["pe"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[7]/div").text
+    share_stats["ps"]=get_ps(ticket)
     return share_stats
 """
     share_stats["ps"]
@@ -54,6 +59,19 @@ def post_to_django(data, django_url):
     print(stock_post.status_code)
     print(stock_post.text)
 
+def get_ps(ticket):
+    ps_ratio= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+"&type=price-sales&statement=price-ratios&freq=Q"
+    ps_response = requests.get(ps_ratio)
+    ps_soup = BeautifulSoup(ps_response.text)
+    string_soup = str(ps_soup)
+    find_var = re.search("var chartData.*}]", string_soup)
+    save_var = str(find_var[0])[::-1]
+    cut_last_vals = save_var.split(':"1v')[0]
+    last_vals = cut_last_vals[::-1].replace('"v3":', '').replace("}]", "")
+    split_vals = last_vals.split(",")
+    return(split_vals[1])
+
+
 
 if __name__ == "__main__":
     display.start()
@@ -65,6 +83,5 @@ if __name__ == "__main__":
             shares.append(share(stock_count))
             print(shares) #print for test
             #post_to_django(stock, django_url)
-            
         except Exception as e:
             print(e)
