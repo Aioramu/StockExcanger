@@ -17,14 +17,14 @@ stock_count=1 #on curr page, takes 1-20 values
 shares = [] # list of dictionaries that flashing on each iteration
 ticket = str
 
-#selenium and display settings
+#selenium, and display settings
 display = Display(visible=0, size=(800, 600))
 options = webdriver.FirefoxOptions()
 service = Service(executable_path = "/usr/local/bin/geckodriver")
 service_log_path = "/dev/null"
 options.add_argument('--headless') #turn off display for docker
 driver = webdriver.Firefox(options=options, service=service, service_log_path=service_log_path)
-
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 def switch_page(i):
     """switch to next page"""
@@ -50,14 +50,12 @@ def share(stock_count):
     share_stats["roe"]=get_roe(ticket, "&type=roe&statement=ratios&freq=Q")
     share_stats["debt_eq"]=get_roe(ticket, "&type=debt-equity-ratio&statement=ratios&freq=Q")
     return share_stats
-"""
-    share_stats["debt_eq"]
-"""
+
 
 def get_ratio(ticket, req_fragment):
     """for ps, pb or env"""
     ratio_url= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+req_fragment
-    response = requests.get(ratio_url)
+    response = requests.get(ratio_url, headers=headers)
     soup = BeautifulSoup(response.text)
     string_soup = str(soup)
     find_var = re.search("var chartData.*}]", string_soup)
@@ -70,7 +68,7 @@ def get_ratio(ticket, req_fragment):
 def get_net_worth(ticket):
     """return net worth in B"""
     pb_ratio= "https://www.macrotrends.net/assets/php/market_cap.php?t="+ticket
-    pb_response = requests.get(pb_ratio)
+    pb_response = requests.get(pb_ratio, headers=headers)
     pb_soup = BeautifulSoup(pb_response.text)
     string_soup = str(pb_soup)
     find_var = re.search("var chartData.*}]", string_soup)
@@ -81,7 +79,7 @@ def get_net_worth(ticket):
 
 def get_roe(ticket, req_fragment):
     pb_ratio= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+req_fragment
-    pb_response = requests.get(pb_ratio)
+    pb_response = requests.get(pb_ratio, headers=headers)
     pb_soup = BeautifulSoup(pb_response.text)
     string_soup = str(pb_soup)
     find_var = re.search("var chartData.*}]", string_soup)
@@ -101,11 +99,13 @@ if __name__ == "__main__":
     display.start()
     driver.get(url)
     while(True):
+        switch_page(stock_count)
+        shares.clear()
         try:
-            switch_page(stock_count)
-            shares.clear()
             shares.append(share(stock_count))
-            print(shares) #print for test
-            #post_to_django(stock, django_url)
         except Exception as e:
             print(e)
+        print(shares) #print for test
+        #post_to_django(stock, django_url)
+       
+           
