@@ -52,12 +52,3 @@ class FinancialList(generics.ListCreateAPIView):
             else:
                 return Response(serializer.errors,status=404)
         return Response(out)
-
-class SomeView(APIView):
-    def post(self,request):
-        serializer=SomeSerializer(data=request.data)
-        if serializer.is_valid():
-            stock=serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors,status=404)
