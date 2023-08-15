@@ -9,6 +9,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432"
+    networks:
+       - overlay
     container_name: stock-db
   web:
     restart: always
@@ -17,16 +19,24 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8872:8000"
+      - "8000:8000"
+    networks:
+       - overlay
     container_name: stock
   selenium:
       build:
         context: .
         dockerfile: ./DockerfileSmartLab
       ports:
-        - 4000:4000
+        - "4000:4000"
+      networks:
+       - overlay
       volumes:
         - .:/usr/src/app
+      container_name: stock-selen
       stdin_open: true # docker run -i
       tty: true        # docker run -t
       privileged: true
+
+networks:
+  overlay:

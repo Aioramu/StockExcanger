@@ -24,7 +24,4 @@ class Financial(models.Model):
      net_income=models.FloatField(null=True)
      debt=models.FloatField(null=True)
      stock=models.ForeignKey(Stock,on_delete=models.CASCADE)
-
-class SomeModel(models.Model):
-    field1=models.CharField(max_length=256,null=True)
-    field2=models.CharField(max_length=256,null=True)
+     country=models.CharField(max_length=256,null=True,blank=True)
