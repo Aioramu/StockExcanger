@@ -5,7 +5,7 @@ from rest_framework import generics
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 from .filters import FinanceFilter
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from django.db import transaction
 
 
 # Create your views here.
@@ -15,18 +15,26 @@ class FinancialList(generics.ListCreateAPIView):
     serializer_class = FinancialSerializer
     #pagination_class = StandardResultsSetPagination
     filter_class = FinanceFilter
+    @transaction.atomic()
     def post(self,request:list):
         out=[]
         for i in request.data:
+            if 'country' in i:
+                country=data.pop('country')
             serializer=StockSerializer(data=i)
             if serializer.is_valid():
-                serializer.save()
-                fin_serializer=self.serializer_class(stock=serializer)
-                if fin_serializer.is_valid():
-                    fin_serializer.save()
-                    out.append(fin_serializer.data)
+                stock=serializer.save()
+
+                fin_obj=self.queryset.filter(stock__ticket=i['ticket'])
+                if len(fin_obj)==0:
+                    obj=self.queryset.create(stock=stock,country=country)
                 else:
-                    return Response(serializer.errors,status=404)
+                    obj=fin_obj.last()
+                    obj.stock=stock
+                    obj.country=country
+                    obj.save()
+                fin_serializer=self.serializer_class(obj)
+                out.append(fin_serializer.data)
             else:
                 return Response(serializer.errors,status=404)
         return Response(out)
