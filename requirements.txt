@@ -14,3 +14,6 @@ pyTelegramBotAPI
 markdown
 pytest
 django-filter
+pyvirtualdisplay
+selenium==4.2.0
+BeautifulSoup4

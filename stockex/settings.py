@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from datetime import timedelta
-
+from stockex import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -89,6 +89,21 @@ DATABASES = {
 'PORT': ''
 }
 }
+
+CELERY_TIMEZONE = 'Europe/Moscow'
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+#CELERY_RESULT_BACKEND = 'django-cache'
+CELERY_CACHE_BACKEND = 'default'
+RABBIT_HOST=config.rabbit_host
+RABBIT_PORT='5672'
+CELERY_BROKER_URL='pyamqp://'+config.rabbit_user+':'+config.rabbit_pass+'@'+RABBIT_HOST+':'+RABBIT_PORT
+CELERY_BROKER_TRANSPORT_OPTIONS={'visiuability_timeout':3600}
+CELERY_RESULT_BACKEND='rpc://'+config.rabbit_user+':'+config.rabbit_pass+'@'+RABBIT_HOST+':'+RABBIT_PORT
+CELERY_ACCEPT_CONTENT=['application/json']
+CELERY_TASK_SERIALIZER='json'
+CELERY_RESULT_SERIALIZER='json'
+
 
 REST_FRAMEWORK = {
     #'EXCEPTION_HANDLER': 'autopodbor.exceptions.core_exception_handler',

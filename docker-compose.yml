@@ -37,6 +37,39 @@ services:
       stdin_open: true # docker run -i
       tty: true        # docker run -t
       privileged: true
-
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+     - overlay
+    volumes:
+        - ./myrabbit.conf:/etc/rabbitmq/rabbitmq.conf
+  celery:
+    build: .
+    container_name: 'stock-tasks'
+    command: bash -c "celery -A stockex worker -l INFO --concurrency=8"
+    ports:
+      - 5555:5555
+    volumes:
+      - .:/code
+    restart: always
+    environment:
+      - TZ=Europe/Moscow
+    links:
+      - rabbitmq
+      - web
+    networks:
+     - overlay
+  celery_beat:
+    build: .
+    command: celery -A celery_beat beat --loglevel=INFO
+    volumes:
+      - .:/code
+    networks:
+     - overlay
 networks:
   overlay:

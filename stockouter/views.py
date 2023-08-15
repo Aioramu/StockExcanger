@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .serializers import StockSerializer,FinancialSerializer,SomeSerializer
+from .serializers import StockSerializer,FinancialSerializer
 from rest_framework import generics
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 from .filters import FinanceFilter
