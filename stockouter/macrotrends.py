@@ -26,12 +26,17 @@ def initiate_display():
     switch_page(driver)
     driver.close()
     display.stop()
-        
+
+def total_shares(driver):
+    page_num = driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[10]/div/div[6]").text
+    count = int(page_num.split(" ")[-1])
+    return count
+
 def switch_page(driver):
     """switch to next page"""
     stock_count=1
     shares = []
-    while True:
+    for stock in range(0, total_shares(driver)):
         if stock_count%21!=0:
             if threading.active_count() < thread_count:
                 th = threading.Thread(target=view_page, args=(shares, stock_count, driver), daemon=True)
@@ -39,13 +44,13 @@ def switch_page(driver):
                 stock_count+=1
                 #print(threading.active_count()) print for test
             else:
-                sleep(0.1)
+                sleep(0.25)
         else:
             driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[10]/div/div[4]/div").click()
             stock_count=1
             send_list(shares)
-            shares.clear() 
-            
+            shares.clear()
+
 def view_page(shares, stock_count, driver):
     try:
         shares.append(share(stock_count, driver))
@@ -75,19 +80,28 @@ def share(stock_count, driver):
 def get_ratio(ticket, req_fragment):
     """for ps, pb or env"""
     ratio_url= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+req_fragment
-    last_vals = get_graph_var(ratio_url)[::-1].replace('"v3":', '').replace("}]", "")
+    try:
+        last_vals = get_graph_var(ratio_url)[::-1].replace('"v3":', '').replace("}]", "")
+    except TypeError:
+        return None
     split_vals = last_vals.split(",")
     return(split_vals[1])
  
 def get_net_worth(ticket):
     """return net worth in B"""
     ratio_url= "https://www.macrotrends.net/assets/php/market_cap.php?t="+ticket
-    last_vals = get_graph_var(ratio_url)[::-1].replace('}]', '')
+    try:
+        last_vals = get_graph_var(ratio_url)[::-1].replace('}]', '')
+    except TypeError:
+        return None
     return(last_vals)
  
 def get_roe(ticket, req_fragment):
     ratio_url= "https://www.macrotrends.net/assets/php/fundamental_iframe.php?t="+ticket+req_fragment
-    last_vals = get_graph_var(ratio_url)[::-1].replace('"v2":', '').replace('"v3":', '').replace('}]', '')
+    try:
+        last_vals = get_graph_var(ratio_url)[::-1].replace('"v2":', '').replace('"v3":', '').replace('}]', '')
+    except TypeError:
+        return None
     split_vals = last_vals.split(",")
     return(split_vals[2])
 
@@ -96,9 +110,6 @@ def get_graph_var(ratio_url):
     soup = BeautifulSoup(response.text)
     string_soup = str(soup)
     find_var = re.search("var chartData.*}]", string_soup)
-    try:
-        save_var = str(find_var[0])[::-1]
-    except TypeError:
-        pass
+    save_var = str(find_var[0])[::-1]
     cut_last_vals = save_var.split(':"1v')[0]
     return cut_last_vals
