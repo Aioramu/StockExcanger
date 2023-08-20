@@ -1,12 +1,16 @@
 import re
 import requests
+import threading
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
 from bs4 import BeautifulSoup
+from time import sleep
 #from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+
+thread_count = 4
 
 def initiate_display():
     #selenium, and display settings
@@ -25,12 +29,17 @@ def initiate_display():
         
 def switch_page(driver):
     """switch to next page"""
-    stock_count=int(1)
+    stock_count=1
     shares = []
-    for stock_count in range(1, 22):
+    while True:
         if stock_count%21!=0:
-            view_page(shares, stock_count, driver)
-            stock_count=stock_count+1
+            if threading.active_count() < thread_count:
+                th = threading.Thread(target=view_page, args=(shares, stock_count, driver), daemon=True)
+                th.start()
+                stock_count+=1
+                #print(threading.active_count()) print for test
+            else:
+                sleep(0.1)
         else:
             driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[10]/div/div[4]/div").click()
             stock_count=1
@@ -42,10 +51,10 @@ def view_page(shares, stock_count, driver):
         shares.append(share(stock_count, driver))
     except Exception as e:
         print(e)
-    #print(shares[-1]) #print for test
+    print(shares[-1]) #print for test
 
 def send_list(shares):
-    print(shares)     #print for test
+    #print(shares)     #print for test
     return shares
     
 def share(stock_count, driver):
