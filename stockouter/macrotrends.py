@@ -30,15 +30,19 @@ def initiate_display():
 def share(stock_count, driver):
     """take some shares"""
     share_stats = {}
-    share_stats["name"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[1]/div/div/a").text
     ticket = driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[2]/div").text
     share_stats["ticket"]=ticket
+    share_stats["name"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[1]/div/div/a").text
+    share_stats["price"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[5]/div").text
+    share_stats["last_divident"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[8]/div").text
     share_stats["pe"]=driver.find_element_by_xpath("/html/body/div[1]/div[4]/div[2]/div/div/div/div/div[4]/div[2]/div/div["+str(stock_count)+"]/div[7]/div").text
     share_stats["ps"]=get_ratio(ticket, "&type=price-sales&statement=price-ratios&freq=Q")
     share_stats["pb"]=get_ratio(ticket, "&type=price-book&statement=price-ratios&freq=Q")
     share_stats["env"]=get_ratio(ticket, "&type=price-fcf&statement=price-ratios&freq=Q")
     share_stats["net_worth"]=get_net_worth(ticket)
     share_stats["roe"]=get_roe(ticket, "&type=roe&statement=ratios&freq=Q")
+    share_stats["roa"]=get_roe(ticket, "&type=roa&statement=ratios&freq=Q")
+    share_stats["roi"]=get_roe(ticket, "&type=roi&statement=ratios&freq=Q")
     share_stats["debt_eq"]=get_roe(ticket, "&type=debt-equity-ratio&statement=ratios&freq=Q")
     return share_stats
  
