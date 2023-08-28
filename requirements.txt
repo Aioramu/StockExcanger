@@ -12,7 +12,8 @@ redis
 celery
 pyTelegramBotAPI
 markdown
-pytest
+pytest==7.1.1
+pytest-django==4.5.2
 django-filter
 pyvirtualdisplay
 selenium==4.2.0
