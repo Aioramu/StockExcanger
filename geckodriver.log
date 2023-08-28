@@ -145,3 +145,746 @@ DevTools listening on ws://127.0.0.1:55597/devtools/browser/50ee669b-2a36-429c-b
 console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
 JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
 JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693244879057	geckodriver	INFO	Listening on 127.0.0.1:52443
+1693244879466	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "47989" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileQRO3ya"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693244890737	Marionette	INFO	Marionette enabled
+1693244892024	Marionette	INFO	Listening on port 38883
+Read port: 38883
+WebDriver BiDi listening on ws://127.0.0.1:47989
+1693244892793	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:47989/devtools/browser/6371c2eb-96d4-4536-9e3f-c53dbb907d7a
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693244936513	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:221:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:205:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:180:31
+1693245081028	geckodriver	INFO	Listening on 127.0.0.1:44639
+1693245081553	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "54449" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilebTfCsc"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693245082385	Marionette	INFO	Marionette enabled
+1693245082467	Marionette	INFO	Listening on port 36905
+WebDriver BiDi listening on ws://127.0.0.1:54449
+Read port: 36905
+1693245084174	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:54449/devtools/browser/4f548a78-508a-429a-814f-1f98967ca395
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693245469056	geckodriver	INFO	Listening on 127.0.0.1:34919
+1693245469561	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "34129" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile6UB4bp"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693245469907	Marionette	INFO	Marionette enabled
+1693245469994	Marionette	INFO	Listening on port 42649
+WebDriver BiDi listening on ws://127.0.0.1:34129
+Read port: 42649
+1693245471720	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:34129/devtools/browser/38a43b72-80a3-4eb5-be52-1469f6b74fe6
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693245527506	geckodriver	INFO	Listening on 127.0.0.1:43063
+1693245527542	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "33619" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilek2tz6R"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693245527922	Marionette	INFO	Marionette enabled
+1693245528009	Marionette	INFO	Listening on port 32919
+WebDriver BiDi listening on ws://127.0.0.1:33619
+Read port: 32919
+Read port: 32919
+1693245532097	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:33619/devtools/browser/13e52e3d-a614-4da9-867a-91d8737b2ae9
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693245864276	geckodriver	INFO	Listening on 127.0.0.1:55125
+1693245864284	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "46539" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilekqIVZ3"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693245864602	Marionette	INFO	Marionette enabled
+1693245864686	Marionette	INFO	Listening on port 40145
+WebDriver BiDi listening on ws://127.0.0.1:46539
+Read port: 40145
+1693245866381	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:46539/devtools/browser/ded2753d-2749-49d1-9690-6b4050671e38
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693246084485	geckodriver	INFO	Listening on 127.0.0.1:58425
+1693246084489	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "51093" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileFu4Vif"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246084821	Marionette	INFO	Marionette enabled
+1693246084907	Marionette	INFO	Listening on port 34161
+WebDriver BiDi listening on ws://127.0.0.1:51093
+Read port: 34161
+1693246087168	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51093/devtools/browser/be20f749-e689-4516-9d96-e8b2f47c6487
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1693246618988	geckodriver	INFO	Listening on 127.0.0.1:46053
+1693246618993	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "51161" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilecBLysy"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246621065	Marionette	INFO	Marionette enabled
+1693246621151	Marionette	INFO	Listening on port 38403
+WebDriver BiDi listening on ws://127.0.0.1:51161
+Read port: 38403
+1693246622629	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51161/devtools/browser/c2460347-ce10-404b-a38b-ac1e9827dba7
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693246694151	geckodriver	INFO	Listening on 127.0.0.1:53891
+1693246694160	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "52115" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileuuyRDU"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246694498	Marionette	INFO	Marionette enabled
+1693246694580	Marionette	INFO	Listening on port 38085
+WebDriver BiDi listening on ws://127.0.0.1:52115
+Read port: 38085
+1693246696185	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52115/devtools/browser/11843b28-7562-4ac4-a016-11dd4fa066c7
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693246864490	geckodriver	INFO	Listening on 127.0.0.1:39997
+1693246864494	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "57743" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilek81hDR"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246864839	Marionette	INFO	Marionette enabled
+1693246864921	Marionette	INFO	Listening on port 35771
+WebDriver BiDi listening on ws://127.0.0.1:57743
+Read port: 35771
+1693246866536	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:57743/devtools/browser/b169fb7d-2285-4bbd-a12e-d23ffc0669d5
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693246919387	geckodriver	INFO	Listening on 127.0.0.1:45099
+1693246919392	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "40033" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile8EXAgi"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246919751	Marionette	INFO	Marionette enabled
+1693246919832	Marionette	INFO	Listening on port 33705
+WebDriver BiDi listening on ws://127.0.0.1:40033
+Read port: 33705
+1693246921440	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:40033/devtools/browser/597212bd-722f-4d00-928c-2b02cd189c9a
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693246939641	geckodriver	INFO	Listening on 127.0.0.1:32993
+1693246940146	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "52297" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilenKcZ4f"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693246940499	Marionette	INFO	Marionette enabled
+1693246940581	Marionette	INFO	Listening on port 43805
+WebDriver BiDi listening on ws://127.0.0.1:52297
+Read port: 43805
+1693246942577	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:52297/devtools/browser/c26d0406-ee77-415b-a4c4-92a268148b57
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247022704	geckodriver	INFO	Listening on 127.0.0.1:41159
+1693247022709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "36755" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilepUJ3CU"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247023047	Marionette	INFO	Marionette enabled
+1693247023132	Marionette	INFO	Listening on port 46305
+WebDriver BiDi listening on ws://127.0.0.1:36755
+Read port: 46305
+1693247024260	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:36755/devtools/browser/6d5bbce0-b22c-4886-a496-8fa9e77bb765
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247244164	geckodriver	INFO	Listening on 127.0.0.1:49439
+1693247244669	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53907" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile36ARpP"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247245254	Marionette	INFO	Marionette enabled
+1693247245336	Marionette	INFO	Listening on port 45229
+WebDriver BiDi listening on ws://127.0.0.1:53907
+Read port: 45229
+1693247246601	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:53907/devtools/browser/8d081a4c-a536-4170-94dc-4c4050f283e0
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247586153	geckodriver	INFO	Listening on 127.0.0.1:48713
+1693247586179	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "49253" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileYXYIBN"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247586516	Marionette	INFO	Marionette enabled
+1693247586599	Marionette	INFO	Listening on port 42905
+WebDriver BiDi listening on ws://127.0.0.1:49253
+Read port: 42905
+1693247589087	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:49253/devtools/browser/a2ce146e-1f0c-47bb-af40-20d0f27ae170
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247660390	geckodriver	INFO	Listening on 127.0.0.1:40117
+1693247660395	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "51961" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilesVSDuy"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247660733	Marionette	INFO	Marionette enabled
+1693247660816	Marionette	INFO	Listening on port 35695
+WebDriver BiDi listening on ws://127.0.0.1:51961
+Read port: 35695
+Read port: 35695
+Read port: 35695
+1693247663666	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51961/devtools/browser/24603f84-7bdb-409b-9fc2-295455548dc1
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247703711	geckodriver	INFO	Listening on 127.0.0.1:33307
+1693247704245	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "40425" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileLPTREi"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247704625	Marionette	INFO	Marionette enabled
+1693247704728	Marionette	INFO	Listening on port 37661
+Read port: 37661
+WebDriver BiDi listening on ws://127.0.0.1:40425
+1693247706014	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:40425/devtools/browser/44da7084-5737-4d8a-9e94-bc3510d7b3f3
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247763665	geckodriver	INFO	Listening on 127.0.0.1:41269
+1693247763672	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "59997" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileN1WE59"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247764055	Marionette	INFO	Marionette enabled
+1693247764139	Marionette	INFO	Listening on port 34889
+WebDriver BiDi listening on ws://127.0.0.1:59997
+Read port: 34889
+1693247764872	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:59997/devtools/browser/f69b7fbc-6f24-4e95-9a61-dbd1d5698612
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247798955	geckodriver	INFO	Listening on 127.0.0.1:40957
+1693247798960	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "55375" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileWW8GhY"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247799336	Marionette	INFO	Marionette enabled
+1693247799419	Marionette	INFO	Listening on port 38989
+WebDriver BiDi listening on ws://127.0.0.1:55375
+Read port: 38989
+1693247800397	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55375/devtools/browser/f0e79c78-ab88-4f26-824e-e46f7fa842d0
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693247979155	geckodriver	INFO	Listening on 127.0.0.1:53261
+1693247979834	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "32979" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileeXIrA8"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693247980679	Marionette	INFO	Marionette enabled
+1693247980770	Marionette	INFO	Listening on port 33129
+WebDriver BiDi listening on ws://127.0.0.1:32979
+Read port: 33129
+1693247982171	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:32979/devtools/browser/e7d0cc2e-79c2-49ee-8c55-a481fcb4003a
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248063882	geckodriver	INFO	Listening on 127.0.0.1:57613
+1693248063887	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "43797" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileWKP6HE"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248064225	Marionette	INFO	Marionette enabled
+1693248064311	Marionette	INFO	Listening on port 44231
+WebDriver BiDi listening on ws://127.0.0.1:43797
+Read port: 44231
+1693248065966	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:43797/devtools/browser/29ae6774-9f29-48de-b68e-77c4483bffb7
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248157464	geckodriver	INFO	Listening on 127.0.0.1:39475
+1693248157470	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "37799" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileQWMiRm"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248157868	Marionette	INFO	Marionette enabled
+1693248157955	Marionette	INFO	Listening on port 38219
+WebDriver BiDi listening on ws://127.0.0.1:37799
+Read port: 38219
+1693248158775	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:37799/devtools/browser/2c34fc03-3c0e-435c-991a-64babf20120f
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248253185	geckodriver	INFO	Listening on 127.0.0.1:35969
+1693248253191	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "51571" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileLFvPaY"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248253534	Marionette	INFO	Marionette enabled
+1693248253618	Marionette	INFO	Listening on port 44723
+WebDriver BiDi listening on ws://127.0.0.1:51571
+Read port: 44723
+1693248255107	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:51571/devtools/browser/bb68d3b1-126a-40a8-a386-9febe099d5b8
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248291622	geckodriver	INFO	Listening on 127.0.0.1:35293
+1693248292348	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "59123" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile9hEiTy"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248292691	Marionette	INFO	Marionette enabled
+1693248292772	Marionette	INFO	Listening on port 33805
+WebDriver BiDi listening on ws://127.0.0.1:59123
+Read port: 33805
+Read port: 33805
+1693248295494	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:59123/devtools/browser/e9ede510-389d-4dab-bd6c-a83ae81f8b74
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248769609	geckodriver	INFO	Listening on 127.0.0.1:53025
+1693248770090	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "54565" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile3aj8j1"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248770518	Marionette	INFO	Marionette enabled
+1693248770601	Marionette	INFO	Listening on port 39409
+WebDriver BiDi listening on ws://127.0.0.1:54565
+Read port: 39409
+1693248773097	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:54565/devtools/browser/9f1e0f5f-776a-4e1c-b860-020f52710795
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693248806873	geckodriver	INFO	Listening on 127.0.0.1:53607
+1693248806877	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "41441" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilezB1wG5"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693248807248	Marionette	INFO	Marionette enabled
+1693248807340	Marionette	INFO	Listening on port 35115
+WebDriver BiDi listening on ws://127.0.0.1:41441
+Read port: 35115
+1693248808340	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:41441/devtools/browser/8d48f596-fcef-41fd-be11-ca5e4c0e6df1
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1693249085281	geckodriver	INFO	Listening on 127.0.0.1:58873
+1693249085286	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53849" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileFMeOoJ"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249085677	Marionette	INFO	Marionette enabled
+1693249085763	Marionette	INFO	Listening on port 46021
+WebDriver BiDi listening on ws://127.0.0.1:53849
+Read port: 46021
+1693249086586	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:53849/devtools/browser/cf887b42-9c49-4632-b129-c026f30d7e84
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249133353	geckodriver	INFO	Listening on 127.0.0.1:39621
+1693249133363	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "55435" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilenSFYUa"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249133720	Marionette	INFO	Marionette enabled
+1693249133804	Marionette	INFO	Listening on port 43811
+WebDriver BiDi listening on ws://127.0.0.1:55435
+Read port: 43811
+Read port: 43811
+1693249136229	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55435/devtools/browser/e4d9d5c6-5cef-447e-85ca-bd8741c7ec11
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249210098	geckodriver	INFO	Listening on 127.0.0.1:37897
+1693249210601	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53815" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilewUSh8S"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249211089	Marionette	INFO	Marionette enabled
+1693249211175	Marionette	INFO	Listening on port 37525
+WebDriver BiDi listening on ws://127.0.0.1:53815
+Read port: 37525
+1693249212670	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:53815/devtools/browser/dade009d-0b2c-404b-b4e0-eaf873ee8d0b
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249370188	geckodriver	INFO	Listening on 127.0.0.1:51245
+1693249370202	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "34749" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofiler3hzZo"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249370752	Marionette	INFO	Marionette enabled
+1693249370836	Marionette	INFO	Listening on port 44045
+WebDriver BiDi listening on ws://127.0.0.1:34749
+Read port: 44045
+1693249372372	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:34749/devtools/browser/cf5b65de-b7b0-4e89-aada-5827ff959a8c
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249473157	geckodriver	INFO	Listening on 127.0.0.1:35571
+1693249473651	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "46633" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileUC2Z3s"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249474514	Marionette	INFO	Marionette enabled
+1693249474607	Marionette	INFO	Listening on port 41091
+WebDriver BiDi listening on ws://127.0.0.1:46633
+Read port: 41091
+1693249476266	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.error: Region.sys.mjs: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 757))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 411))
+DevTools listening on ws://127.0.0.1:46633/devtools/browser/c0007d6f-77c7-432d-972b-c5e8018263eb
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249635411	geckodriver	INFO	Listening on 127.0.0.1:44257
+1693249635452	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53767" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilex6qhXx"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249636156	Marionette	INFO	Marionette enabled
+1693249636249	Marionette	INFO	Listening on port 46141
+Read port: 46141
+WebDriver BiDi listening on ws://127.0.0.1:53767
+1693249636753	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:53767/devtools/browser/598bc604-18f1-4880-abf5-06eaeac5ab77
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249703840	geckodriver	INFO	Listening on 127.0.0.1:35175
+1693249703846	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "38291" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileBW7uvI"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249704270	Marionette	INFO	Marionette enabled
+1693249704353	Marionette	INFO	Listening on port 43255
+WebDriver BiDi listening on ws://127.0.0.1:38291
+Read port: 43255
+1693249706525	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:38291/devtools/browser/37243633-7c14-49de-af5e-9b5d7c7dcb09
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249756841	geckodriver	INFO	Listening on 127.0.0.1:38535
+1693249757291	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "36267" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilels6DkF"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249759475	Marionette	INFO	Marionette enabled
+1693249759820	Marionette	INFO	Listening on port 41639
+WebDriver BiDi listening on ws://127.0.0.1:36267
+Read port: 41639
+Read port: 41639
+1693249762883	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 759))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 411))
+DevTools listening on ws://127.0.0.1:36267/devtools/browser/ef768cb0-c7cf-4cde-afce-adbdb359f527
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693249860290	geckodriver	INFO	Listening on 127.0.0.1:42947
+1693249860798	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "53665" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileyddnr5"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693249861697	Marionette	INFO	Marionette enabled
+1693249862059	Marionette	INFO	Listening on port 43983
+Read port: 43983
+WebDriver BiDi listening on ws://127.0.0.1:53665
+1693249862807	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:53665/devtools/browser/39fb237c-14fe-4a60-8582-e82a108b857f
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+1693250201035	geckodriver	INFO	Listening on 127.0.0.1:35521
+1693250201550	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "59575" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileQ3uvpL"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693250202667	Marionette	INFO	Marionette enabled
+1693250202753	Marionette	INFO	Listening on port 44261
+Read port: 44261
+WebDriver BiDi listening on ws://127.0.0.1:59575
+1693250203786	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:59575/devtools/browser/e59f0560-9a5a-4ca1-8ada-29cb09e39b55
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 638))
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1693250437329	geckodriver	INFO	Listening on 127.0.0.1:54527
+1693250437819	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--remote-debugging-port" "33215" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilej5YkQb"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[GFX1-]: glxtest: libpci missing
+[GFX1-]: glxtest: Unable to open a connection to the X server
+[GFX1-]: No GPUs detected via PCI
+
+1693250439069	Marionette	INFO	Marionette enabled
+1693250439241	Marionette	INFO	Listening on port 46531
+WebDriver BiDi listening on ws://127.0.0.1:33215
+Read port: 46531
+1693250441198	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:33215/devtools/browser/9fa5e012-35db-438a-87f9-b82182585bb6
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxlistbox.js, line 7: unreachable code after return statement
+JavaScript warning: https://www.macrotrends.net/assets/php/jqfiles/jqwidgets/jqxdata.export.js, line 7: unreachable code after return statement
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
