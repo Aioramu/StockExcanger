@@ -16,23 +16,8 @@ from selenium.webdriver.firefox.service import Service
 thread_count = 4
 
 
-def initiate_display() -> None:
-    """selenium, and display settings"""
-    display = Display(visible=0, size=(800, 600))
-    options = webdriver.FirefoxOptions()
-    service = Service(executable_path="/usr/local/bin/geckodriver")
-    service_log_path = "/dev/null"
-    options.add_argument("--headless")  # turn off display for docker
-    driver = webdriver.Firefox(
-        options=options, service=service, service_log_path=service_log_path
-    )
-    url = "https://www.macrotrends.net/stocks/stock-screener"  # parser's target
-    display.start()
-    driver.get(url)
-    switch_page(driver)
-    driver.close()
-    display.stop()
-    return None
+# def initiate_display() -> None:
+#    switch_page(driver)
 
 
 def share(stock_count, driver) -> Dict:
@@ -185,6 +170,27 @@ def send_list(shares: List[Dict], q) -> List[Dict]:
     return shares
 
 
+def initiate_display(body):
+    def selenium_and_display_settings(*args, **kwargs):
+        display = Display(visible=0, size=(800, 600))
+        options = webdriver.FirefoxOptions()
+        service = Service(executable_path="/usr/local/bin/geckodriver")
+        service_log_path = "/dev/null"
+        options.add_argument("--headless")  # turn off display for docker
+        driver = webdriver.Firefox(
+            options=options, service=service, service_log_path=service_log_path
+        )
+        url = "https://www.macrotrends.net/stocks/stock-screener"  # parser's target
+        display.start()
+        driver.get(url)
+        body(driver, *args, **kwargs)
+        driver.close()
+        display.stop()
+
+    return selenium_and_display_settings
+
+
+@initiate_display
 def switch_page(driver) -> None:
     """switch to next page"""
     stock_count: int = 1
@@ -210,7 +216,3 @@ def switch_page(driver) -> None:
     sleep(10)
     send_list(shares, q)
     return None
-
-
-if __name__ == "__main__":
-    initiate_display()
