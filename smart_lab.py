@@ -2,154 +2,175 @@ from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-#from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from time import sleep
-import requests
-import ast
-import json
+from typing import Dict, List
+from selenium.common.exceptions import NoSuchElementException
+import datetime
+
+url = "https://smart-lab.ru/q/shares_fundamental/"  # parser's target
 
 
-url = "https://smart-lab.ru/q/shares_fundamental/"
-django_url = "http://web:8000"
-shares = []
-i=1
+def initiate_display(body):
+    def selenium_and_display_settings(*args, **kwargs):
+        display = Display(visible=0, size=(800, 600))
+        options = webdriver.FirefoxOptions()
+        service = Service(executable_path="/usr/local/bin/geckodriver")
+        service_log_path = "/dev/null"
+        options.add_argument("--headless")  # turn off display for docker
+        driver = webdriver.Firefox(
+            options=options, service=service, service_log_path=service_log_path
+        )
+        display.start()
+        driver.get(url)
+        body(driver, *args, **kwargs)
+        driver.close()
+        display.stop()
 
-#selenium and display settings
-display = Display(visible=0, size=(800, 600))
-options = webdriver.FirefoxOptions()
-service = Service(executable_path = "/usr/local/bin/geckodriver")
-service_log_path = "/dev/null"
-options.add_argument('--headless') #turn off display for docker
-driver = webdriver.Firefox(options=options, service=service, service_log_path=service_log_path)
+    return selenium_and_display_settings
 
 
-class Share(object):
+def remove_trash(string) -> str:
+    """Remove % ₽ млрд spases and replace , to ."""
+    string = str(string)
+    string = (
+        string.replace(",", ".")
+        .replace(" ", "")
+        .replace("%", "")
+        .replace("₽", "")
+        .replace("млрд", "")
+    )
+    return string
 
-    def __init__(self, url):
-        self.url = url
-    """Take some Share's stats"""
 
-    def from_shares(self, tdnum):
-        """Take some text from shares fundamental"""
-        l=driver.find_element_by_xpath(
-         "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td["+str(tdnum)+"]").text
-        return(l)
+def new_page(parse):
+    def wrapper_function(driver, ticket):
+        driver.execute_script(
+            "window.open('https://smart-lab.ru/forum/GAZP', '_blank')"
+        )
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get("https://smart-lab.ru/forum/" + ticket)
+        driver.find_element_by_xpath(
+            "/html/body/div[2]/div[3]/div[1]"
+        ).click()  # serch grath button
+        parse()
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
 
-    def remove_trash(string):
-        """Remove % ₽ млрд spases and replace , to ."""
-        string=str(string)
-        string=string.replace(",", ".").replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "")
-        return string
+    return wrapper_function
 
-    def share_body(self):
-        report = self.from_shares(19)
-        if int(report[:report.rfind('-')]) <= 2019:
-            print("Too old")
-            return None
+
+@new_page
+def share_ao(share_stats, driver) -> Dict:
+    try:
+        share_stats["price"] = driver.find_element_by_xpath(
+            "/html/body/div[2]/div[3]/div[3]/div[2]/span/i"
+        ).text.replace("₽", "")
+    except Exception as e:
+        print(e)
+        print("Missing ao price")
+    print(share_stats)
+    return share_stats
+
+
+@new_page
+def share_ap():
+    return None
+
+
+def share(i, driver) -> Dict:
+    """take some shares"""
+    share_stats: Dict = {}
+    share_stats["name"] = driver.find_element_by_xpath(
+        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[" + str(i) + "]/td[2]/a"
+    ).text
+    share_stats["pe"] = from_shares(13, i, driver)
+    share_stats["ps"] = from_shares(14, i, driver)
+    share_stats["pb"] = from_shares(15, i, driver)
+    share_stats["env"] = from_shares(16, i, driver)
+    share_stats["net_worth"] = remove_trash(from_shares(6, i, driver))
+    share_stats["roe"] = remove_trash(from_shares(17, i, driver))
+    share_stats["debt_eq"] = remove_trash(from_shares(18, i, driver))
+    share_stats["country"] = "ru"
+    if from_shares(10, i, driver) != None and from_shares(11, i, driver) == None:
+        share_ao(share_stats, driver)
+    return share_stats
+
+
+""" ticket=models.CharField(max_length=256,unique=True)
+    price=models.FloatField(null=True)
+    pe=models.FloatField(null=True)
+    ps=models.FloatField(null=True)
+    pb=models.FloatField(null=True)
+    ebitda=models.FloatField(null=True)
+    env=models.FloatField(null=True)
+    net_worth=models.FloatField(null=True)
+    roe=models.FloatField(null=True)
+    debt_eq=models.FloatField(null=True)
+    roa=models.FloatField(null=True)
+    roi=models.FloatField(null=True)
+    last_divident=models.FloatField(null=True)"""
+
+
+def from_shares(column_num, i, driver) -> str:
+    """Take some text from shares fundamental"""
+    l = driver.find_element_by_xpath(
+        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["
+        + str(i)
+        + "]/td["
+        + str(column_num)
+        + "]"
+    ).text
+    if len(l) < 1:
+        return None
+    return l
+
+
+def date_check(i, driver) -> bool:
+    """remove share if last report more than 3 years"""
+    report = from_shares(19, i, driver)
+    current_year = datetime.datetime.now().year
+    suitable_year = current_year - 2
+    if int(report[: report.rfind("-")]) < suitable_year:
+        return False
+    return True
+
+
+def ticket_href_check(i, driver) -> bool:
+    """remove share if ticket too long"""
+    ticket_href = driver.find_element_by_xpath(
+        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[" + str(i) + "]/td[2]/a"
+    ).get_attribute("href")
+    ticket = ticket_href[ticket_href.rfind("/") + 1 :]
+    if len(ticket) > 10:
+        print(ticket_href)
+        return False
+    return True
+
+
+def end_of_table(i, driver) -> bool:
+    try:
+        element = driver.find_element_by_xpath(
+            "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["
+            + str(i)
+            + "]/td[1]"
+        ).text
+    except NoSuchElementException:
+        return True
+    return False
+
+
+@initiate_display
+def switch_page(driver):
+    shares = []
+    i = 2
+    while True:
+        if end_of_table(i, driver) == True:
+            break  # exit in the end of table
+        elif date_check(i, driver) == False or ticket_href_check(i, driver) == False:
+            pass
         else:
-            ticket_href = driver.find_element_by_xpath(
-                        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").get_attribute("href")
-            ticket = ticket_href[ticket_href.rfind('/')+1:]
-            if len(ticket) > 10:
-                print("Too scam")
-                return None
-            else:
-                share_stats = {}
-                share_stats["name"]=driver.find_element_by_xpath(
-                                   "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(i)+"]/td[2]/a").text
-                share_stats["ticket"]=ticket
-                share_stats["pe"]=self.from_shares(13)
-                share_stats["ps"]=self.from_shares(14)
-                share_stats["pb"]=self.from_shares(15)
-                share_stats["env"]=self.from_shares(16)
-                share_stats["net_worth"]=self.from_shares(6)
-                share_stats["net_worth"]=share_stats["net_worth"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
-                share_stats["roe"]=self.from_shares(17)
-                share_stats["roe"]=share_stats["roe"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
-                share_stats["debt_eq"]=self.from_shares(18)
-                share_stats["country"]="ru"
-                share_stats=self.ao(ticket, share_stats)
-                #shares.append(share_stats)
-                return share_stats
+            share(i, driver)
+        i += 1
 
-    def ao(self, ticket, share_stats):
-        driver.execute_script("window.open('https://smart-lab.ru/forum/GAZP', '_blank')")
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://smart-lab.ru/forum/"+ticket)
-        driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]").click() #serch grath button
-        try:
-            share_stats["price"]=driver.find_element_by_xpath(
-                                "/html/body/div[2]/div[3]/div[3]/div[2]/span/i").text.replace("₽", "")
-        except Exception as e:
-            print(e)
-            print("Missing ao price")
-            #return None
-        try:
-            share_stats["ebitda"]=driver.find_element_by_xpath(
-                                 "/html/body/div[2]/div[3]/div[2]/div[2]/div/table[2]/tbody/tr[3]/td[2]").text #.replace(" млрд", "")
-            share_stats["ebitda"]=share_stats["ebitda"].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
-        except Exception as e:
-            print(e)
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-        return share_stats
-
-    def ap(self, share_stats):
-        driver.execute_script("window.open('https://smart-lab.ru/forum/GAZP', '_blank')")
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://smart-lab.ru/forum/"+ticket_for_url)
-        driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]").click()
-        try:
-            share_stats["ticket"]=driver.find_element_by_xpath(
-                                  "/html/body/div[2]/div[2]/div[2]/div[2]/div/table[1]/tbody/tr[6]/td[2]/ul/li").text
-        except Exception as e:
-            print(e)
-            share_stats["ticket"]=share_stats["ticket"
-                                  ].replace(" ", "").replace("%", "").replace("₽", "").replace("млрд", "").replace(",", ".")
-        try:
-            share_stats["price"]=driver.find_element_by_xpath(
-                                 "/html/body/div[2]/div[2]/div[3]/div[2]/span[2]/i").text.replace("₽", "")
-        except Exception as e:
-            print(e)
-
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-        return share_stats
-
-def post_to_django(shares, django_url):
-    #stock_dict = ast.literal_eval(data)
-    stock_post = requests.post(django_url, json=shares)
-    print(stock_post.status_code)
-    print(stock_post.text)
 
 if __name__ == "__main__":
-    display.start()
-    driver.get(url)
-    gas = driver.find_element_by_xpath(
-        "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr[2]/td[11]").text #Empty ap"
-    while(True):
-        try:
-            i+=1
-            tr = str(i+1)
-            stock = Share("https://smart-lab.ru/q/shares_fundamental/")
-            t = stock.share_body()
-            shares.clear()
-            shares.append(t)
-            if driver.find_element_by_xpath(
-                     "/html/body/div[1]/div/div[6]/div/div/table[1]/tbody/tr["+str(tr)+"]/td[11]").text == gas:
-                #post_to_django(shares, django_url)
-                print(shares)
-            else:
-                stock_ao = stock.share_body()
-                if stock_ao!=None:
-                    #ost_to_django(stock_ao, django_url)
-                    print(stock_ao)
-                    ticket_for_url = stock_ao["ticket"]
-                    stock_ap = stock.ap(stock_ao)
-                    #post_to_django(stock_ap, django_url)
-                    print(stock_ap)
-        except Exception as e:
-            #driver.quit()
-            #display.stop()
-            print(e)
-            break
+    switch_page()
