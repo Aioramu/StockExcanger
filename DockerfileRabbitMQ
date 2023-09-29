@@ -1,0 +1,7 @@
+FROM rabbitmq:3-management-alpine
+COPY managment/rabbitmq.conf /etc/rabbitmq/rabbitmque.conf
+ENV RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmque.conf
+
+
+#ENV RABBIT_PORT=${RABBIT_PORT}
+#RUN sed -i 's/listeners.tcp.default = 5672/listeners.tcp.default = '$RABBIT_PORT'/g' /etc/rabbitmq/rabbitmq.conf

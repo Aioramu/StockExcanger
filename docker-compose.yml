@@ -10,9 +10,9 @@ services:
     ports:
       - "5432"
     networks:
-       - overlay
+      - overlay
     container_name: stock-db
-  web:      
+  web:
     restart: always
     image: web:1
     build:
@@ -22,42 +22,45 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "${WEB_PORT}:${WEB_PORT}"
     networks:
-       - overlay
+      - overlay
     container_name: stock
   rabbitmq:
     restart: always
-    image: rabbitmq:3-management-alpine
+    image: rabbitmque
+    build:
+      context: .
+      dockerfile: ./DockerfileRabbitMQ
     ports:
-        - 5672:5672
-        - 15672:15672
+      - ${RABBIT_PORT}:${RABBIT_PORT}
+      - ${RABBIT_MANAGMENT}:${RABBIT_MANAGMENT}
     networks:
-     - overlay
+      - overlay
     volumes:
-        - ./myrabbit.conf:/etc/rabbitmq/rabbitmq.conf
-  celery:      
+      - ./myrabbit.conf:/etc/rabbitmq/rabbitmq.conf
+  celery:
     image: web:1
     build: .
     container_name: 'stock-tasks'
     command: bash -c "celery -A stockex worker -l INFO --concurrency=8"
     ports:
-      - 5555:5555
+      - "${CELERY_PORT}:${CELERY_PORT}"
     volumes:
       - .:/code
     restart: always
     environment:
       - TZ=Europe/Moscow
     networks:
-     - overlay
+      - overlay
   celery_beat:
-    image: web:1      
+    image: web:1
     build: .
     container_name: stockexcanger-celery_beat-1
     command: bash -c "celery -A celery_beat beat --loglevel=INFO"
     volumes:
       - .:/code
     networks:
-     - overlay
+      - overlay
 networks:
   overlay:
