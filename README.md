@@ -1,7 +1,7 @@
 # StockExcanger
 backend for stock monitoring
 
-[![CodeQL](https://github.com/Aioramu/StockExcanger/actions/workflows/codeql.yml/badge.svg?branch=unittests&event=check_run)](https://github.com/Aioramu/StockExcanger/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/Aioramu/StockExcanger/actions/workflows/codeql.yml/badge.svg?branch=unittests)](https://github.com/Aioramu/StockExcanger/actions/workflows/codeql.yml)
 ### environment variables need to add into stockex/.env  all variables discribed in stockex/config.py and managment folder
 
 #### start macrotrends task
