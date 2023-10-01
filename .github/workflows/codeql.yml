@@ -13,14 +13,25 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "unittests" ]
+    branches: [ "master", "unittests" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "unittests" ]
+    branches: [ "master", "unittests" ]
   schedule:
-    - cron: '22 16 * * 5'
+    - cron: '0 5 * * *'
 
 jobs:
+  test_parser:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build the Docker image
+      run: docker build --file Dockerfile --tag test .
+
+    - name: Run Docker with pytest
+      run: docker run -w /code/stockouter/tests test pytest
+
   analyze:
     name: Analyze
     # Runner size impacts CodeQL analysis time. To learn more, please see:
