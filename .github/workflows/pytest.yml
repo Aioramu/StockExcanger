@@ -1,0 +1,20 @@
+name: pytest
+
+on:
+  push:
+    branches: [ "master", "unittests" ]
+  pull_request:
+    branches: [ "master", "unittests" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        docker build . --file Dockerfile --tag web:$(date +%s)
+        docker run web:$(date +%s)
+        docker exec -it stock ./manage.py shell
+        cd stockouter/tests
+        pytest
