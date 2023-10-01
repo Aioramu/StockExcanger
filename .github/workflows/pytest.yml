@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+
     - name: Build the Docker image
+      run: docker build --file Dockerfile --tag web .
+
+    - name: Run docker
+      run: docker run --name test web sh -c 'while true; do sleep 1000; done'
+
+    - name: Run pytest
       run: |
-        docker build --file Dockerfile --tag web .
-        docker run --name test web sh -c 'while true; do sleep 1000; done'
         docker exec -it test /bin/bash
         cd stockouter/tests
         pytest
