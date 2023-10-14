@@ -9,9 +9,10 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432"
+    container_name: stock-db
     networks:
       - overlay
-    container_name: stock-db
+
   web:
     restart: always
     image: web:1
@@ -23,9 +24,10 @@ services:
       - .:/code
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
+    container_name: stock
     networks:
       - overlay
-    container_name: stock
+
   rabbitmq:
     restart: always
     image: rabbitmque
@@ -37,8 +39,7 @@ services:
       - ${RABBIT_MANAGMENT}:${RABBIT_MANAGMENT}
     networks:
       - overlay
-    volumes:
-      - ./myrabbit.conf:/etc/rabbitmq/rabbitmq.conf
+
   celery:
     image: web:1
     build: .
@@ -53,6 +54,7 @@ services:
       - TZ=Europe/Moscow
     networks:
       - overlay
+
   celery_beat:
     image: web:1
     build: .
@@ -62,5 +64,55 @@ services:
       - .:/code
     networks:
       - overlay
+
+  nginx:
+    image: nginx:stable
+    build: .
+    volumes:
+      - ./managment/nginx.conf:/etc/nginx/nginx.conf
+      - ./managment/static.html:/etc/nginx/html/index.html
+    ports:
+      - 80:80
+    networks:
+      - overlay
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./managment/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    networks:
+      - overlay
+
+  cadvisor:
+    image: google/cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    networks:
+      - overlay
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - managment/grafana-data:/var/lib/grafana
+    networks:
+      - overlay
+
 networks:
   overlay:
+    driver: overlay
+  outside:
+    external: true
+    name: "host"
